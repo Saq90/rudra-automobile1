@@ -18,7 +18,7 @@ class Car(models.Model):
     power = models.IntegerField(null=True)
     tank_capacity = models.IntegerField(null=True)
     engine_displacement = models.IntegerField(null=True)
-    added_by = models.ForeignKey(User, on_delete=None, null=True)
+    added_by = models.ForeignKey(User, on_delete=None)
     description = models.TextField()
 
     def __str__(self):
@@ -41,7 +41,7 @@ class Order(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
     amount = models.IntegerField()
     address = models.TextField()
-    approved_by = models.ForeignKey(User, on_delete=None, null=True, related_name='approved_by_user')
+    approved_by = models.ForeignKey(User, on_delete=None, related_name='approved_by_user')
     is_delivered = models.BooleanField(default=False)
 
     def __str__(self):
